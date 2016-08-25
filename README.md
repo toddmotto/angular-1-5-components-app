@@ -25,4 +25,4 @@ To run this app, follow the [instructions here](https://github.com/toddmotto/ult
 
 Yes, I'm going to convert this to ES6, and maybe TypeScript. You're welcome to PR the transition (open an issue first) but please don't change application functionality or anything else :)
 
-![Contacts Manager](https://cloud.githubusercontent.com/assets/1655968/17980022/5e7f60f6-6af5-11e6-96b2-f4b192be8346.gif)
+![Contacts Manager](https://cloud.githubusercontent.com/assets/1655968/17981372/5907ffb0-6afb-11e6-9bb4-7e223b56e0d4.gif)
