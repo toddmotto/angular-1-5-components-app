@@ -17,6 +17,7 @@ A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application
 - ui-router 1.0.0
 - Firebase auth and database/hosting
 - Fully tested, including spec files
+- Built against my component architecture [styleguide](https://github.com/toddmotto/angular-styleguide)
 
 ### Setup and install
 
