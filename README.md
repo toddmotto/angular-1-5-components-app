@@ -6,7 +6,19 @@
 
 ---
 
-A Contacts Manager application built on Angular 1.5 components, ui-router 1.0.0, Firebase. Want to build it? Jump on my [Angular 1.5 Master course](https://courses.toddmotto.com).
+A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application built on Angular 1.5 components, ui-router 1.0.0, Firebase. Want to build it? Jump on my [Angular 1.5 Master course](https://courses.toddmotto.com).
+
+### List of features:
+
+- Angular 1.5 `.component()` method
+- Stateful/stateless and routed components
+- One-way dataflow
+- Lifecycle hooks
+- ui-router 1.0.0
+- Firebase auth and database/hosting
+- Fully tested, including spec files
+
+### Setup and install
 
 To run this app, follow the [instructions here](https://github.com/toddmotto/ultimate-angular-master-seed). Basically `npm install` and `npm start`. Run tests with `npm test`. Have fun!
 
