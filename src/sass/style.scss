@@ -224,6 +224,8 @@ root .loader {
   padding: 15px 20px;
   font-size: 16px;
   overflow: hidden;
+  text-align: left;
+  width: 100%;
 }
 .contact-card__column {
   float: left;
@@ -245,8 +247,9 @@ root .loader {
 .contact-card__column .contact-card__pill {
   opacity: 1
 }
-.contact-card__pill a {
+.contact-card__pill button {
   color: #fff;
+  font-size: 12px;
 }
 .contact-card__pill--friends {
   background: #008FED;
@@ -282,7 +285,7 @@ root .loader {
   margin-bottom: 15px;
   padding-right: 30px;
 }
-.contact button {
+.contact__action {
   float: right;
 }
 .contact__required {
@@ -350,27 +353,34 @@ input:focus {
 }
 
 button {
-  background: rgba(0, 133, 215, 0.6);
-  color: #fff;
-  border-radius: 3px;
-  box-shadow: 0 3px 0px 0px rgba(0, 133, 215, 1);
-  font-size: 16px;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 10px 15px;
-  margin-bottom: 3px;
+  font: 300 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
 }
 
 button:focus {
   outline: none;
 }
 
-button:active {
+.button {
+  background: rgba(0, 133, 215, 0.6);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 3px 0px 0px rgba(0, 133, 215, 1);
+  font-size: 16px;
+  padding: 10px 15px;
+  margin-bottom: 3px;
+}
+
+.button:active {
   outline: none;
   margin-top: 2px;
   box-shadow: 0 1px 0px 0px rgba(0, 133, 215, 1);
   margin-bottom: 1px;
 }
+
 button[disabled] {
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.4);
