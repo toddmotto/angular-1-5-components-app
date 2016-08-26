@@ -1,20 +1,38 @@
+
 // Colors
-$error: #B72B2C;
+// Purpose: These maps are meant to group color variables together and to help simplify the variable names when calling them.
 
-$button-bg: rgba(0, 133, 215, 0.6);
-$button-shadow: rgba(0, 133, 215, 1);
+$brandColors: (
+    scaffold: (
+        base:           #5c5c5c,
+        error:          #B72B2C,
+        newContact:     #50D749,
+        logout:         #E32E30
+    ),
+    button: (
+        base:           rgba(0, 133, 215, 0.6),
+        shadow:         rgba(0, 133, 215, 1),
+        hover:          #0085d7,
+        hoverShadow:    darken(#0085d7, 8%)
+    ),
+    buttonDelete: (
+        base:           rgba(227, 46, 48, 0.6),
+        shadow:         rgba(227, 46, 48, 1),
+        hover:          #e32e30,
+        hoverShadow:    darken(#e32e30, 10%)
+    ),
+    pills: (
+        base:           #008FED,
+        family:         #FF387E,
+        acquaintances:  #B5D158,
+        following:      #DB5A3D
+    )
+);
 
-$button-hover-bg: $button-shadow;
-$button-hover-shadow: darken($button-shadow, 8%);
+@function colors($color, $tone: "base") {
+    @return map-get(map-get($brandColors, $color), $tone);
+}
 
-$button-delete-bg: rgba(227, 46, 48, 0.6);
-$button-delete-shadow: rgba(227, 46, 48, 1);
-
-$button-hover-delete-bg: $button-delete-shadow;
-$button-hover-delete-shadow: darken($button-delete-shadow, 10%);
-
-$new-contact: #50D749;
-$logout: #E32E30;
 
 * {
 box-sizing: border-box;
@@ -26,11 +44,11 @@ padding: 0;
 
 body {
   font: 300 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #5c5c5c;
+  color: colors(scaffold);
   background: #FFFFFF;
 }
 a {
-  color: #5c5c5c;
+  color: colors(scaffold);
   text-decoration: none;
 }
 ul {
@@ -79,11 +97,11 @@ root .loader {
 }
 .header__logout a {
   display: inline-block;
-  color: $logout;
+  color: colors(scaffold, logout);
   padding: 5px 10px;
   margin-left: 10px;
   &:hover {
-    color: darken($logout, 15);
+    color: darken(colors(scaffold, logout), 15%);
   }
 }
 .header__button {
@@ -96,12 +114,12 @@ root .loader {
   margin-right: 3px;
 }
 .header__button--new-contact {
-  color: $new-contact;
+  color: colors(scaffold, newContact);
   margin-left: 30px;
   position: relative;
   top: -2px;
   &:hover {
-    color: darken($new-contact, 15%);
+    color: darken(colors(scaffold, newContact), 15%);
   }
 }
 
@@ -276,16 +294,16 @@ root .loader {
   color: #fff;
 }
 .contact-card__pill--friends {
-  background: #008FED;
+  background: colors(pills);
 }
 .contact-card__pill--family {
-  background: #FF387E;
+  background: colors(pills, family);
 }
 .contact-card__pill--acquaintances {
-  background: #B5D158;
+  background: colors(pills, acquaintances);
 }
 .contact-card__pill--following {
-  background: #DB5A3D;
+  background: colors(pills, following);
 }
 
 /**
@@ -313,7 +331,7 @@ root .loader {
   float: right;
 }
 .contact__required {
-  color: $error;
+  color: colors(scaffold, error);
   font-size: 16px;
   line-height: 0px;
   position: relative;
@@ -325,7 +343,7 @@ root .loader {
 }
 .contact__error {
   float: right;
-  color: $error
+  color: colors(scaffold, error);
 }
 .contact__field label {
   font-size: 12px;
@@ -372,18 +390,22 @@ input {
   padding: 10px 15px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
+
+  &:hover {
+    border-color: colors(button);
+  }
 }
 
 input:focus {
-  border: 1px solid rgba(0, 133, 215, 1);
+  border-color: colors(button, hover);
   outline: none;
 }
 
 button {
-  background: $button-bg;
+  background: colors(button);
   color: #fff;
   border-radius: 3px;
-  box-shadow: 0 3px 0px 0px $button-shadow;
+  box-shadow: 0 3px 0px 0px colors(button, shadow);
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -391,8 +413,8 @@ button {
   margin-bottom: 3px;
 
   &:hover {
-    background: $button-hover-bg;
-    box-shadow: 0 3px 0 0 $button-hover-shadow;
+    background: colors(button, hover);
+    box-shadow: 0 3px 0 0 colors(button, hoverShadow);
   }
 }
 
@@ -403,8 +425,8 @@ button:focus {
 button:active,
 button:focus {
   outline: none;
-  background: $button-hover-shadow;
-  box-shadow: 0 3px 0 0 darken($button-hover-shadow, 8%);
+  background: colors(button, hoverShadow);
+  box-shadow: 0 3px 0 0 darken(colors(button, hoverShadow), 8%);
   margin-bottom: 1px;
 }
 button[disabled] {
@@ -414,18 +436,18 @@ button[disabled] {
   box-shadow: 0 3px 0px 0px rgba(0, 0, 0, 0.1);
 }
 button.delete {
-  background: $button-delete-bg;
-  box-shadow: 0 3px 0px 0px $button-delete-shadow;
+  background: colors(buttonDelete);
+  box-shadow: 0 3px 0px 0px colors(buttonDelete, shadow);
 
   &:hover {
-    background: $button-hover-delete-bg;
-    box-shadow: 0 3px 0 0 $button-hover-delete-shadow;
+    background: colors(buttonDelete, hover);
+    box-shadow: 0 3px 0 0 colors(buttonDelete, hoverShadow);
   }
 }
 button.delete:active,
 button.delete:focus {
-  background: $button-hover-delete-shadow;
-  box-shadow: 0 3px 0 0 darken($button-hover-delete-shadow, 8%);
+  background: colors(buttonDelete, hoverShadow);
+  box-shadow: 0 3px 0 0 darken(colors(buttonDelete, hoverShadow), 8%);
 }
 
 .dynamic-input {
@@ -486,10 +508,10 @@ button.delete:focus {
 #loading-bar,#loading-bar-spinner{pointer-events:none;-webkit-pointer-events:none;-webkit-transition:350ms linear all;-moz-transition:350ms linear all;-o-transition:350ms linear all;transition:350ms linear all}#loading-bar-spinner.ng-enter,#loading-bar-spinner.ng-leave.ng-leave-active,#loading-bar.ng-enter,#loading-bar.ng-leave.ng-leave-active{opacity:0}#loading-bar-spinner.ng-enter.ng-enter-active,#loading-bar-spinner.ng-leave,#loading-bar.ng-enter.ng-enter-active,#loading-bar.ng-leave{opacity:1}#loading-bar .bar{-webkit-transition:width 350ms;-moz-transition:width 350ms;-o-transition:width 350ms;transition:width 350ms;background:#29d;position:fixed;z-index:10002;top:0;left:0;width:100%;height:2px;border-bottom-right-radius:1px;border-top-right-radius:1px}#loading-bar .peg{position:absolute;width:70px;right:0;top:0;height:2px;opacity:.45;-moz-box-shadow:#29d 1px 0 6px 1px;-ms-box-shadow:#29d 1px 0 6px 1px;-webkit-box-shadow:#29d 1px 0 6px 1px;box-shadow:#29d 1px 0 6px 1px;-moz-border-radius:100%;-webkit-border-radius:100%;border-radius:100%}#loading-bar-spinner{display:block;position:fixed;z-index:10002;top:10px;left:10px}#loading-bar-spinner .spinner-icon{width:14px;height:14px;border:2px solid transparent;border-top-color:#29d;border-left-color:#29d;border-radius:50%;-webkit-animation:loading-bar-spinner 400ms linear infinite;-moz-animation:loading-bar-spinner 400ms linear infinite;-ms-animation:loading-bar-spinner 400ms linear infinite;-o-animation:loading-bar-spinner 400ms linear infinite;animation:loading-bar-spinner 400ms linear infinite}@-webkit-keyframes loading-bar-spinner{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-moz-keyframes loading-bar-spinner{0%{-moz-transform:rotate(0);transform:rotate(0)}100%{-moz-transform:rotate(360deg);transform:rotate(360deg)}}@-o-keyframes loading-bar-spinner{0%{-o-transform:rotate(0);transform:rotate(0)}100%{-o-transform:rotate(360deg);transform:rotate(360deg)}}@-ms-keyframes loading-bar-spinner{0%{-ms-transform:rotate(0);transform:rotate(0)}100%{-ms-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes loading-bar-spinner{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 
 .message {
-    &:not(:first-child) {
-        margin-top: 15px;
-    }
-    &.error {
-    color: $error;
-    }
+  &:not(:first-child) {
+    margin-top: 15px;
+  }
+  &.error {
+    color: colors(scaffold, error);
+  }
 }
