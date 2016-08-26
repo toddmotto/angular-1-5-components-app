@@ -1,3 +1,21 @@
+// Colors
+$error: #B72B2C;
+
+$button-bg: rgba(0, 133, 215, 0.6);
+$button-shadow: rgba(0, 133, 215, 1);
+
+$button-hover-bg: $button-shadow;
+$button-hover-shadow: darken($button-shadow, 8%);
+
+$button-delete-bg: rgba(227, 46, 48, 0.6);
+$button-delete-shadow: rgba(227, 46, 48, 1);
+
+$button-hover-delete-bg: $button-delete-shadow;
+$button-hover-delete-shadow: darken($button-delete-shadow, 10%);
+
+$new-contact: #50D749;
+$logout: #E32E30;
+
 * {
 box-sizing: border-box;
 -webkit-box-sizing: border-box;
@@ -61,9 +79,12 @@ root .loader {
 }
 .header__logout a {
   display: inline-block;
-  color: #E32E30;
+  color: $logout;
   padding: 5px 10px;
   margin-left: 10px;
+  &:hover {
+    color: darken($logout, 15);
+  }
 }
 .header__button {
   font-size: 16px;
@@ -75,10 +96,13 @@ root .loader {
   margin-right: 3px;
 }
 .header__button--new-contact {
-  color: #50D749;
+  color: $new-contact;
   margin-left: 30px;
   position: relative;
   top: -2px;
+  &:hover {
+    color: darken($new-contact, 15%);
+  }
 }
 
 /**
@@ -241,6 +265,9 @@ root .loader {
   font-weight: 500;
   margin-left: 10px;
   color: #fff;
+  &:hover {
+    opacity: 0.65;
+  }
 }
 .contact-card__column .contact-card__pill {
   opacity: 1
@@ -286,7 +313,7 @@ root .loader {
   float: right;
 }
 .contact__required {
-  color: #B72B2C;
+  color: $error;
   font-size: 16px;
   line-height: 0px;
   position: relative;
@@ -298,7 +325,7 @@ root .loader {
 }
 .contact__error {
   float: right;
-  color: #B72B2C;
+  color: $error
 }
 .contact__field label {
   font-size: 12px;
@@ -327,6 +354,9 @@ root .loader {
 }
 .contact__pill--active {
   opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }
 .contact__sub-title {
   font-size: 24px;
@@ -350,25 +380,31 @@ input:focus {
 }
 
 button {
-  background: rgba(0, 133, 215, 0.6);
+  background: $button-bg;
   color: #fff;
   border-radius: 3px;
-  box-shadow: 0 3px 0px 0px rgba(0, 133, 215, 1);
+  box-shadow: 0 3px 0px 0px $button-shadow;
   font-size: 16px;
   border: none;
   cursor: pointer;
   padding: 10px 15px;
   margin-bottom: 3px;
+
+  &:hover {
+    background: $button-hover-bg;
+    box-shadow: 0 3px 0 0 $button-hover-shadow;
+  }
 }
 
 button:focus {
   outline: none;
 }
 
-button:active {
+button:active,
+button:focus {
   outline: none;
-  margin-top: 2px;
-  box-shadow: 0 1px 0px 0px rgba(0, 133, 215, 1);
+  background: $button-hover-shadow;
+  box-shadow: 0 3px 0 0 darken($button-hover-shadow, 8%);
   margin-bottom: 1px;
 }
 button[disabled] {
@@ -378,11 +414,18 @@ button[disabled] {
   box-shadow: 0 3px 0px 0px rgba(0, 0, 0, 0.1);
 }
 button.delete {
-  background: rgba(227, 46, 48, 0.6);
-  box-shadow: 0 3px 0px 0px rgba(227, 46, 48, 1);
+  background: $button-delete-bg;
+  box-shadow: 0 3px 0px 0px $button-delete-shadow;
+
+  &:hover {
+    background: $button-hover-delete-bg;
+    box-shadow: 0 3px 0 0 $button-hover-delete-shadow;
+  }
 }
-button.delete:active {
-  box-shadow: 0 1px 0px 0px rgba(227, 46, 48, 1);
+button.delete:active,
+button.delete:focus {
+  background: $button-hover-delete-shadow;
+  box-shadow: 0 3px 0 0 darken($button-hover-delete-shadow, 8%);
 }
 
 .dynamic-input {
@@ -441,3 +484,12 @@ button.delete:active {
 }
 
 #loading-bar,#loading-bar-spinner{pointer-events:none;-webkit-pointer-events:none;-webkit-transition:350ms linear all;-moz-transition:350ms linear all;-o-transition:350ms linear all;transition:350ms linear all}#loading-bar-spinner.ng-enter,#loading-bar-spinner.ng-leave.ng-leave-active,#loading-bar.ng-enter,#loading-bar.ng-leave.ng-leave-active{opacity:0}#loading-bar-spinner.ng-enter.ng-enter-active,#loading-bar-spinner.ng-leave,#loading-bar.ng-enter.ng-enter-active,#loading-bar.ng-leave{opacity:1}#loading-bar .bar{-webkit-transition:width 350ms;-moz-transition:width 350ms;-o-transition:width 350ms;transition:width 350ms;background:#29d;position:fixed;z-index:10002;top:0;left:0;width:100%;height:2px;border-bottom-right-radius:1px;border-top-right-radius:1px}#loading-bar .peg{position:absolute;width:70px;right:0;top:0;height:2px;opacity:.45;-moz-box-shadow:#29d 1px 0 6px 1px;-ms-box-shadow:#29d 1px 0 6px 1px;-webkit-box-shadow:#29d 1px 0 6px 1px;box-shadow:#29d 1px 0 6px 1px;-moz-border-radius:100%;-webkit-border-radius:100%;border-radius:100%}#loading-bar-spinner{display:block;position:fixed;z-index:10002;top:10px;left:10px}#loading-bar-spinner .spinner-icon{width:14px;height:14px;border:2px solid transparent;border-top-color:#29d;border-left-color:#29d;border-radius:50%;-webkit-animation:loading-bar-spinner 400ms linear infinite;-moz-animation:loading-bar-spinner 400ms linear infinite;-ms-animation:loading-bar-spinner 400ms linear infinite;-o-animation:loading-bar-spinner 400ms linear infinite;animation:loading-bar-spinner 400ms linear infinite}@-webkit-keyframes loading-bar-spinner{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-moz-keyframes loading-bar-spinner{0%{-moz-transform:rotate(0);transform:rotate(0)}100%{-moz-transform:rotate(360deg);transform:rotate(360deg)}}@-o-keyframes loading-bar-spinner{0%{-o-transform:rotate(0);transform:rotate(0)}100%{-o-transform:rotate(360deg);transform:rotate(360deg)}}@-ms-keyframes loading-bar-spinner{0%{-ms-transform:rotate(0);transform:rotate(0)}100%{-ms-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes loading-bar-spinner{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+.message {
+    &:not(:first-child) {
+        margin-top: 15px;
+    }
+    &.error {
+    color: $error;
+    }
+}
