@@ -1,9 +1,15 @@
+import angular           from 'angular'
+import angularLoadingBar from 'angular-loading-bar'
+import uiRouter          from 'angular-ui-router'
+
+commonInit.$inject = ['$transitions','cfpLoadingBar']
+function commonInit($transitions, cfpLoadingBar) {
+  $transitions.onStart({}, cfpLoadingBar.start);
+  $transitions.onSuccess({}, cfpLoadingBar.complete);
+}
 angular
   .module('common', [
-    'ui.router',
-    'angular-loading-bar'
+    uiRouter,
+    angularLoadingBar
   ])
-  .run(function ($transitions, cfpLoadingBar) {
-    $transitions.onStart({}, cfpLoadingBar.start);
-    $transitions.onSuccess({}, cfpLoadingBar.complete);
-  });
+  .run(commonInit);

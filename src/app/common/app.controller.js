@@ -1,3 +1,7 @@
+import angular     from 'angular'
+import AuthService from '../components/auth/auth.service'
+
+AppController.$inject = ['AuthService', '$state']
 function AppController(AuthService, $state) {
   var ctrl = this;
   ctrl.user = AuthService.getUser();

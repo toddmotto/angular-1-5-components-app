@@ -1,3 +1,5 @@
+import angular from 'angular'
+
 function AppSidebarController() {
   var ctrl = this;
   ctrl.contactTags = [{

@@ -1,0 +1,16 @@
+<div class="contacts">
+  <ul class="contacts-list">
+    <li ng-repeat="contact in $ctrl.filteredContacts">
+      <contact
+        contact="contact"
+        on-select="$ctrl.goToContact($event);">
+      </contact>
+    </li>
+  </ul>
+  <div
+    class="contacts__empty"
+    ng-if="!$ctrl.filteredContacts.length">
+    <i class="material-icons">face</i>
+    There's no one here...
+  </div>
+</div>

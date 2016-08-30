@@ -1,3 +1,13 @@
+ /**
+  * Mike Erickson <codedungeon@gmail.com>
+  * 2016.08.29 12:26 (mikeerickson)
+  * =============================================================================
+  */
+
+import firebase from 'firebase'
+
+AuthService.$inject = ['$firebaseAuth']
+
 function AuthService($firebaseAuth) {
   var auth = $firebaseAuth();
   var authData = null;
@@ -40,7 +50,3 @@ function AuthService($firebaseAuth) {
     }
   };
 }
-
-angular
-  .module('components.auth')
-  .service('AuthService', AuthService);

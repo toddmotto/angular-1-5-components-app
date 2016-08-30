@@ -1,4 +1,7 @@
+import angular  from 'angular'
+import uiRouter from 'angular-ui-router'
+
 angular
-  .module('components.contact', [
-    'ui.router'
+  .module('contact', [
+    uiRouter
   ]);

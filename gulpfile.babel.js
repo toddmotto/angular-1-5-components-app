@@ -12,6 +12,7 @@ import server from 'browser-sync';
 import del from 'del';
 import path from 'path';
 import child from 'child_process';
+import bump from 'gulp-bump'
 
 const exec = child.exec;
 const argv = yargs.argv;
@@ -100,6 +101,12 @@ gulp.task('watch', ['serve', 'scripts'], () => {
   gulp.watch(paths.styles, ['styles']);
 });
 
+gulp.task('bump', [], () => {
+  gulp.src('./package.json')
+  .pipe(bump({key: "version", type: "prerelease"}))
+  .pipe(gulp.dest('./'));
+});
+
 gulp.task('firebase', ['styles', 'scripts'], cb => {
   return exec('firebase deploy', function (err, stdout, stderr) {
     console.log(stdout);
@@ -110,6 +117,7 @@ gulp.task('firebase', ['styles', 'scripts'], cb => {
 
 gulp.task('default', [
   'copy',
+  'bump',
   'styles',
   'serve',
   'watch'

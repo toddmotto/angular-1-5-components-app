@@ -26,3 +26,17 @@ To run this app, follow the [instructions here](https://github.com/toddmotto/ult
 Yes, I'm going to convert this to ES6, and maybe TypeScript. You're welcome to PR the transition (open an issue first) but please don't change application functionality or anything else :)
 
 ![Contacts Manager](https://cloud.githubusercontent.com/assets/1655968/17981372/5907ffb0-6afb-11e6-9bb4-7e223b56e0d4.gif)
+
+## Credits
+
+angular-1-5-components-app written by Todd Motto
+angular-1-5-components-app ES6 adapted by Mike Erickson
+
+E-Mail: [todd@toddmotto.com](mailto:todd@toddmotto.com)
+E-Mail: [codedungeon@gmail.com](mailto:codedungeon@gmail.com)
+
+Twitter: [@toddmotto](http://twitter.com/toddmotto)
+Twitter: [@codedungeon](http://twitter.com/codedungeon)
+
+Website: [github/toddmotto](https://github.com/toddmotto)
+Website: [github/mikeerickson](https://github.com/mikeerickson)
