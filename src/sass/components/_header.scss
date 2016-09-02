@@ -1,0 +1,48 @@
+.header {
+  height: 60px;
+}
+.header__fixed {
+  background: #fff;
+  height: inherit;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+  border-bottom: 1px solid #E9EEF3;
+  padding: 13px 20px;
+  font-size: 16px;
+}
+.header__brand {
+  font-size: 24px;
+  float: left;
+}
+.header__logout {
+  float: right;
+}
+.header__logout a {
+  display: inline-block;
+  color: colors(scaffold, logout);
+  padding: 5px 10px;
+  margin-left: 10px;
+  &:hover {
+    color: darken(colors(scaffold, logout), 15%);
+  }
+}
+.header__button {
+  font-size: 16px;
+}
+.header__button .material-icons {
+  font-size: inherit;
+  position: relative;
+  top: 2px;
+  margin-right: 3px;
+}
+.header__button--new-contact {
+  color: colors(scaffold, newContact);
+  margin-left: 30px;
+  position: relative;
+  top: -2px;
+  &:hover {
+    color: darken(colors(scaffold, newContact), 15%);
+  }
+}

@@ -1,0 +1,33 @@
+// Colors
+// Purpose: These maps are meant to group color variables together and to help simplify the variable names when calling them.
+
+$brandColors: (
+  scaffold: (
+    base:           #5c5c5c,
+    error:          #B72B2C,
+    newContact:     #50D749,
+    logout:         #E32E30
+  ),
+  button: (
+    base:           rgba(0, 133, 215, 0.6),
+    shadow:         rgba(0, 133, 215, 1),
+    hover:          #0085d7,
+    hoverShadow:    darken(#0085d7, 8%)
+  ),
+  buttonDelete: (
+    base:           rgba(227, 46, 48, 0.6),
+    shadow:         rgba(227, 46, 48, 1),
+    hover:          #e32e30,
+    hoverShadow:    darken(#e32e30, 10%)
+  ),
+  pills: (
+    base:           #008FED,
+    family:         #FF387E,
+    acquaintances:  #B5D158,
+    following:      #DB5A3D
+  )
+);
+
+@function colors($color, $tone: "base") {
+  @return map-get(map-get($brandColors, $color), $tone);
+}
