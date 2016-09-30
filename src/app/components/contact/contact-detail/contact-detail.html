@@ -169,6 +169,7 @@
 
     <div ng-if="$ctrl.isNewContact">
       <button
+        class="contact__action button"
         ng-disabled="contactDetailForm.$invalid"
         ng-click="$ctrl.saveContact();">
         Create contact
@@ -176,7 +177,7 @@
     </div>
     <div ng-if="!$ctrl.isNewContact">
       <button
-        class="delete"
+        class="contact__action button delete"
         ng-click="$ctrl.deleteContact();">
         Delete contact
       </button>

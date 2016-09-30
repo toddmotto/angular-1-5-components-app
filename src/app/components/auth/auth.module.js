@@ -1,3 +1,16 @@
+/**
+ *
+ * @ngdoc module
+ * @name components.auth
+ *
+ * @requires ui.router
+ * @requires firebase
+ *
+ * @description
+ *
+ * This is the auth module. It includes our auth components
+ *
+ **/
 angular
   .module('components.auth', [
     'ui.router',

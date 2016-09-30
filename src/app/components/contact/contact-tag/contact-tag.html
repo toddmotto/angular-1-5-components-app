@@ -9,9 +9,9 @@
       ng-class="{
         'contact__pill--active': $ctrl.tag == tag
       }">
-      <a href="" ng-click="$ctrl.updateTag(tag);">
+      <button class="button--clean" ng-click="$ctrl.updateTag(tag);">
         {{ ::tag }}
-      </a>
+      </button>
     </li>
   </ul>
 </div>
