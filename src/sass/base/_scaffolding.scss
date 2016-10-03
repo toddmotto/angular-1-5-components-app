@@ -1,0 +1,41 @@
+* {
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+  font: 300 14px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: colors(scaffold);
+  background: #FFFFFF;
+}
+a {
+  color: colors(scaffold);
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}
+
+
+
+
+.app {
+  margin-left: 250px;
+}
+
+
+
+.message {
+  &:not(:first-child) {
+    margin-top: 15px;
+  }
+  &.error {
+    color: colors(scaffold, error);
+  }
+}

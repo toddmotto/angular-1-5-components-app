@@ -1,0 +1,40 @@
+{% extends "base.template.html" %}
+
+{% block content %}
+    <h1>
+        {% if doc.title %}{$ doc.title | marked $}{% else %}{$ doc.name | code $}{% endif %}
+    </h1>
+
+    {$ doc.description | marked $}
+
+    {$ doc.stateName $}
+
+    Requires {$ doc.requires $}
+
+    <div class="component-breakdown">
+        <h2>Module Components</h2>
+        {% for componentGroup in doc.componentGroups %}
+            <div>
+                <h3 class="component-heading" id="{$ componentGroup.groupType | dashCase $}">{$ componentGroup.groupType | title $}</h3>
+                <table class="definition-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                    {% for component in componentGroup.components %}
+                        <tr>
+                            <td>{$ component.id | link(component.name, component) $}</td>
+                            <td>{$ component.description | firstParagraph | marked $}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if doc.usage %}
+        <h2>Usage</h2>
+        {$ doc.usage | marked $}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html ng-app="docs">
+    <head>
+        <base href="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Documentation</title>
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    </head>
+    <body>
+
+
+        <nav class="navbar navbar-default">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <span class="navbar-brand">Documentation</span>
+                </div>
+
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="api">API</a></li>
+                    <li><a ui-sref="guide">Guide</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-8" ui-view="main"></div>
+                <div class="col-sm-3 offset-sm-1" ui-view="sidebar"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- vendors -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+        <script src="//cdn.rawgit.com/angular-ui/ui-router/0.2.18/release/angular-ui-router.js"></script>
+
+        <!-- angular app -->
+        <script src="src/app.module.js"></script>
+        <script src="src/app.config.js"></script>
+        <script src="src/api.js"></script>
+        <script src="src/guide.js"></script>
+
+        <!-- page data -->
+        <script src="src/api-data.js"></script>
+        <script src="src/guide-data.js"></script>
+    </body>
+</html>

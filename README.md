@@ -18,6 +18,7 @@ A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application
 - Firebase auth and database/hosting
 - Fully tested, including spec files
 - Built against my component architecture [styleguide](https://github.com/toddmotto/angular-styleguide)
+- Proper SCSS architecture to provide maintainable, scalable and well-organized code
 
 ### Setup and install
 

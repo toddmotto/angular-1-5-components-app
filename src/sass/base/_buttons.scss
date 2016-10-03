@@ -1,0 +1,49 @@
+
+button {
+  background: colors(button);
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 3px 0px 0px colors(button, shadow);
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin-bottom: 3px;
+
+  &:hover {
+    background: colors(button, hover);
+    box-shadow: 0 3px 0 0 colors(button, hoverShadow);
+  }
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active,
+button:focus {
+  outline: none;
+  background: colors(button, hoverShadow);
+  box-shadow: 0 3px 0 0 darken(colors(button, hoverShadow), 8%);
+  margin-bottom: 1px;
+}
+button[disabled] {
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.4);
+  cursor: not-allowed;
+  box-shadow: 0 3px 0px 0px rgba(0, 0, 0, 0.1);
+}
+button.delete {
+  background: colors(buttonDelete);
+  box-shadow: 0 3px 0px 0px colors(buttonDelete, shadow);
+
+  &:hover {
+    background: colors(buttonDelete, hover);
+    box-shadow: 0 3px 0 0 colors(buttonDelete, hoverShadow);
+  }
+}
+button.delete:active,
+button.delete:focus {
+  background: colors(buttonDelete, hoverShadow);
+  box-shadow: 0 3px 0 0 darken(colors(buttonDelete, hoverShadow), 8%);
+}

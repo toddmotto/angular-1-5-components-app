@@ -1,0 +1,48 @@
+.contact-card {
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.contact-card__link {
+  display: block;
+  padding: 15px 20px;
+  font-size: 16px;
+  overflow: hidden;
+}
+.contact-card__column {
+  float: left;
+}
+.contact-card__column--name {
+  width: 30%;
+}
+.contact-card__pill {
+  opacity: 0.4;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  padding: 2px 5px 1px;
+  font-weight: 500;
+  margin-left: 10px;
+  color: #fff;
+  &:hover {
+    opacity: 0.65;
+  }
+}
+.contact-card__column .contact-card__pill {
+  opacity: 1
+}
+.contact-card__pill a {
+  color: #fff;
+}
+.contact-card__pill--friends {
+  background: colors(pills);
+}
+.contact-card__pill--family {
+  background: colors(pills, family);
+}
+.contact-card__pill--acquaintances {
+  background: colors(pills, acquaintances);
+}
+.contact-card__pill--following {
+  background: colors(pills, following);
+}
