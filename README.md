@@ -1,4 +1,4 @@
-<a href="https://courses.toddmotto.com" target="_blank"><img src="https://toddmotto.com/img/ua.png"></a>
+<a href="https://ultimateangular.com" target="_blank"><img src="https://toddmotto.com/img/ua.png"></a>
 
 # Angular 1.5 component architecture app
 
@@ -6,7 +6,7 @@
 
 ---
 
-A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application built on Angular 1.5 components, ui-router 1.0.0, Firebase. Want to build it? Jump on my [Angular 1.5 Master course](https://courses.toddmotto.com).
+A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application built on Angular 1.5 components, ui-router 1.0.0, Firebase. Want to build it? Jump on my [Angular 1.5 Pro course](https://ultimateangular.com).
 
 ### List of features:
 
