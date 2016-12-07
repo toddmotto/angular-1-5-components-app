@@ -19,7 +19,7 @@ A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application
 - Fully tested, including spec files
 - Built against my component architecture [styleguide](https://github.com/toddmotto/angular-styleguide)
 - Proper SCSS architecture to provide maintainable, scalable and well-organized code
-- Latest version of JavaScript (ES2015) for close that will closer resemble what you might write in Angular 2
+- Latest version of JavaScript (ES2015), for writing code as close to Angular 2 style as possible
 
 ### Setup and install
 
