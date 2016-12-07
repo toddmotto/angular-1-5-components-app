@@ -1,13 +1,15 @@
-describe('Contact', function () {
-  beforeEach(module('components.contact'));
+describe('Contact', () => {
+  beforeEach(() => {
+    angular.mock.module('components.contact');
+  });
 
-  describe('Controller', function () {
-    var $componentController,
-      controller,
-      mockContact = { $id: 1 },
-      mockSelect = angular.noop;
+  describe('Controller', () => {
+    let $componentController;
+    let controller;
+    const mockContact = { $id: 1 };
+    const mockSelect = angular.noop;
 
-    beforeEach(inject(function ($injector) {
+    beforeEach(inject(($injector) => {
       $componentController = $injector.get('$componentController');
       controller = $componentController('contact',
         { $scope: {} },
@@ -15,12 +17,12 @@ describe('Contact', function () {
       );
     }));
 
-    it('should bind to the correct contact', function () {
+    it('should bind to the correct contact', () => {
       expect(controller.contact.$id).toEqual(mockContact.$id);
     });
 
-    it('should call onSelect with the correct payload', function () {
-      var payload = { $event: { contactId: mockContact.$id } };
+    it('should call onSelect with the correct payload', () => {
+      const payload = { $event: { contactId: mockContact.$id } };
 
       spyOn(controller, 'onSelect');
       controller.selectContact();

@@ -1,14 +1,28 @@
-var authForm = {
+import templateUrl from './auth-form.html';
+
+export const formComponent = {
   bindings: {
     user: '<',
     button: '@',
     message: '@',
-    onSubmit: '&'
+    onSubmit: '&',
   },
-  templateUrl: './auth-form.html',
-  controller: 'AuthFormController'
+  templateUrl,
+  controller: class FormComponent {
+    constructor() {
+      'ngInject';
+    }
+    $onChanges(changes) {
+      if (changes.user) {
+        this.user = angular.copy(this.user);
+      }
+    }
+    submitForm() {
+      this.onSubmit({
+        $event: {
+          user: this.user,
+        },
+      });
+    }
+  },
 };
-
-angular
-  .module('components.auth')
-  .component('authForm', authForm);

@@ -1,33 +1,22 @@
-var contacts = {
+import templateUrl from './contacts.html';
+
+export const contactsComponent = {
   bindings: {
     contacts: '<',
-    filter: '<'
+    filter: '<',
   },
-  templateUrl: './contacts.html',
-  controller: 'ContactsController'
-};
+  templateUrl,
+  controller: class ContactsComponent {
+    constructor($state, $filter) {
+      'ngInject';
 
-angular
-  .module('components.contact')
-  .component('contacts', contacts)
-  .config(function ($stateProvider) {
-    $stateProvider
-      .state('contacts', {
-        parent: 'app',
-        url: '/contacts?filter',
-        component: 'contacts',
-        params: {
-          filter: {
-            value: 'none'
-          }
-        },
-        resolve: {
-          contacts: function (ContactService) {
-            return ContactService.getContactList().$loaded();
-          },
-          filter: function ($transition$) {
-            return $transition$.params();
-          }
-        }
+      this.$state = $state;
+      this.filteredContacts = $filter('contactsFilter')(this.contacts, this.filter);
+    }
+    goToContact(event) {
+      this.$state.go('contact', {
+        id: event.contactId,
       });
-  });
+    }
+  },
+};

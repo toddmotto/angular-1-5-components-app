@@ -1,14 +1,44 @@
-var contactDetail = {
+import templateUrl from './contact-detail.html';
+
+export const contactDetailComponent = {
   bindings: {
     contact: '<',
     onSave: '&',
     onUpdate: '&',
-    onDelete: '&'
+    onDelete: '&',
   },
-  templateUrl: './contact-detail.html',
-  controller: 'ContactDetailController'
+  templateUrl,
+  controller: class ContactDetailComponent {
+    constructor() {
+      'ngInject';
+    }
+    $onInit() {
+      this.isNewContact = !this.contact.$id;
+    }
+    saveContact() {
+      this.onSave({
+        $event: {
+          contact: this.contact,
+        },
+      });
+    }
+    updateContact() {
+      this.onUpdate({
+        $event: {
+          contact: this.contact,
+        },
+      });
+    }
+    deleteContact() {
+      this.onDelete({
+        $event: {
+          contact: this.contact,
+        },
+      });
+    }
+    tagChange(event) {
+      this.contact.tag = event.tag;
+      this.updateContact();
+    }
+  },
 };
-
-angular
-  .module('components.contact')
-  .component('contactDetail', contactDetail);

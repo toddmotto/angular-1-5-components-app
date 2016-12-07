@@ -1,15 +1,29 @@
-var register = {
-  templateUrl: './register.html',
-  controller: 'RegisterController'
-};
+import templateUrl from './register.html';
 
-angular
-  .module('components.auth')
-  .component('register', register)
-  .config(function ($stateProvider) {
-    $stateProvider
-      .state('auth.register', {
-        url: '/register',
-        component: 'register'
-      });
-  });
+export const registerComponent = {
+  templateUrl,
+  controller: class RegisterComponent {
+    constructor(AuthService, $state) {
+      'ngInject';
+
+      this.authService = AuthService;
+      this.$state = $state;
+    }
+    $onInit() {
+      this.error = null;
+      this.user = {
+        email: '',
+        password: '',
+      };
+    }
+    createUser(event) {
+      return this.authService
+        .register(event.user)
+        .then(() => {
+          this.$state.go('app');
+        }, reason => {
+          this.error = reason.message;
+        });
+    }
+  },
+};

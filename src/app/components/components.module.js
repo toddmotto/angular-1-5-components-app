@@ -1,20 +1,9 @@
+import { auth } from './auth/auth.module';
+import { contact } from './contact/contact.module';
 
-/**
- *
- * @ngdoc module
- * @name components
- *
- * @requires components.contact
- * @requires components.auth
- *
- * @description
- *
- * This is the components module. It includes all of our components.
- *
- **/
-
-angular
+export const components = angular
   .module('components', [
-    'components.contact',
-    'components.auth'
-  ]);
+    auth,
+    contact,
+  ])
+  .name;

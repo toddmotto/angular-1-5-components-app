@@ -1,7 +1,5 @@
-var root = {
-  templateUrl: './root.html'
-};
+import templateUrl from './root.html';
 
-angular
-  .module('root')
-  .component('root', root);
+export const rootComponent = {
+  templateUrl,
+};

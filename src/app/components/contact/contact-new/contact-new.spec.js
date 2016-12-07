@@ -1,60 +1,60 @@
-describe('Contact', function () {
-  beforeEach(module('components.contact', function ($provide) {
-    $provide.value('cfpLoadingBar', {
-      start: angular.noop,
-      complete: angular.noop
-    })
-
-    $provide.value('ContactService', {
-      createNewContact: angular.noop
+describe('Contact', () => {
+  beforeEach(() => {
+    angular.mock.module('components.contact', ($provide) => {
+      $provide.value('cfpLoadingBar', {
+        start: angular.noop,
+        complete: angular.noop
+      });
+      $provide.value('ContactService', {
+        createNewContact: angular.noop
+      });
     });
-  }));
-
-  beforeEach(module('components.auth'));
-
-  beforeEach(module(function ($stateProvider) {
-    $stateProvider.state('app', {
-      redirectTo: 'contacts',
-      url: '/app',
-      data: {
-        requiredAuth: true
-      }
+    angular.mock.module('components.auth');
+    angular.mock.module(($stateProvider) => {
+      $stateProvider.state('app', {
+        redirectTo: 'contacts',
+        url: '/app',
+        data: {
+          requiredAuth: true,
+        },
+      });
     });
-  }));
+  });
 
-  describe('Routes', function () {
-    var $state, $location, $rootScope, AuthService;
+  describe('Routes', () => {
+    let $state;
+    let $location;
+    let $rootScope;
+    let AuthService;
 
     function goTo(url) {
       $location.url(url);
       $rootScope.$digest();
     }
 
-    beforeEach(inject(function ($injector) {
+    beforeEach(inject(($injector) => {
       $state = $injector.get('$state');
       $location = $injector.get('$location');
       $rootScope = $injector.get('$rootScope');
       AuthService = $injector.get('AuthService');
     }));
 
-    it('should go to the contact state', function() {
+    it('should go to the contact state', () => {
       spyOn(AuthService, 'isAuthenticated').and.returnValue(true);
-
       goTo('/app/new');
-
       expect($state.current.name).toEqual('new')
     });
   });
 
-  describe('ContactNewController', function () {
-    var $componentController,
-      controller,
-      $state,
-      ContactService,
-      $rootScope,
-      $q;
+  describe('ContactNewController', () => {
+    let $componentController;
+    let controller;
+    let $state;
+    let ContactService;
+    let $rootScope;
+    let $q;
 
-    beforeEach(inject(function ($injector) {
+    beforeEach(inject(($injector) => {
       $componentController = $injector.get('$componentController');
       $state = $injector.get('$state');
       ContactService = $injector.get('ContactService');
@@ -66,18 +66,16 @@ describe('Contact', function () {
       );
     }));
 
-    it('should create a contact', function () {
-      var event = { contact: { email: 'test@test.com', password: 'insecure' } };
-      spyOn(ContactService, 'createNewContact').and.callFake(
-        function () {
-          return $q.when({ key: 1})
-        }
-      );
+    it('should create a contact', () => {
+      const event = { contact: { email: 'test@test.com', password: 'insecure' } };
+      let promise;
+
+      spyOn(ContactService, 'createNewContact').and.callFake(() => $q.when({ key: 1}));
       spyOn($state, 'go');
 
-      var promise = controller.createNewContact(event);
+      promise = controller.createNewContact(event);
 
-      promise.then(function () {
+      promise.then(() => {
         expect(ContactService.createNewContact).toHaveBeenCalled();
         expect($state.go).toHaveBeenCalledWith('contact', {id: 1});
       });

@@ -1,12 +1,21 @@
-var contact = {
+import templateUrl from './contact.html';
+
+export const contactComponent = {
   bindings: {
     contact: '<',
-    onSelect: '&'
+    onSelect: '&',
   },
-  templateUrl: './contact.html',
-  controller: 'ContactController'
+  templateUrl,
+  controller: class ContactComponent {
+    constructor() {
+      'ngInject';
+    }
+    selectContact() {
+      this.onSelect({
+        $event: {
+          contactId: this.contact.$id,
+        },
+      });
+    }
+  },
 };
-
-angular
-  .module('components.contact')
-  .component('contact', contact);

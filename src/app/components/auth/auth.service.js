@@ -1,61 +1,47 @@
-function AuthService($firebaseAuth) {
-  var auth = $firebaseAuth();
-  var authData = null;
-  function storeAuthData(response) {
-    authData = response;
-    return authData;
-  }
-  function onSignIn(user) {
-    authData = user;
-    return auth.$requireSignIn();
-  }
-  function clearAuthData() {
-    authData = null;
-  }
-  this.login = function (user) {
-    return auth
-      .$signInWithEmailAndPassword(user.email, user.password)
-      .then(storeAuthData);
-  };
-  this.register = function (user) {
-    return auth
-      .$createUserWithEmailAndPassword(user.email, user.password)
-      .then(storeAuthData);
-  };
-  this.logout = function () {
-    return auth
-      .$signOut()
-      .then(clearAuthData);
-  };
-  this.requireAuthentication = function () {
-    return auth
-      .$waitForSignIn().then(onSignIn);
-  };
-  this.isAuthenticated = function () {
-    return !!authData;
-  };
-  this.getUser = function () {
-    if (authData) {
-      return authData;
-    }
-  };
-}
+import firebase from 'firebase';
 
-/**
- * @ngdoc service
- * @name AuthService
- * @module components.auth
- *
- * @description Provides HTTP methods for our firebase authentification.
- *
- * ## Lorem Ipsum 1
- * Aenean ornare odio elit, eget facilisis ipsum molestie ac. Nam bibendum a nibh ut ullamcorper.
- * Donec non felis gravida, rutrum ante mattis, sagittis urna. Sed quam quam, facilisis vel cursus at.
- *
- * ## Lorem Ipsum 2
- * Aenean ornare odio elit, eget facilisis ipsum molestie ac. Nam bibendum a nibh ut ullamcorper.
- * Donec non felis gravida, rutrum ante mattis, sagittis urna. Sed quam quam, facilisis vel cursus at.
- */
-angular
-  .module('components.auth')
-  .service('AuthService', AuthService);
+export class AuthService {
+  constructor($firebaseAuth) {
+    'ngInject';
+
+    this.auth = $firebaseAuth(firebase.auth());
+    this.authData = null;
+    this.onSignIn = (user) => {
+      this.authData = user;
+      return this.auth.$requireSignIn();
+    };
+    this.storeAuthData = (data) => {
+      this.authData = data;
+      return this.authData;
+    };
+    this.clearAuthData = () => {
+      this.authData = null;
+    };
+  }
+  login(user) {
+    return this.auth
+      .$signInWithEmailAndPassword(user.email, user.password)
+      .then(this.storeAuthData);
+  }
+  register(user) {
+    return this.auth
+      .$createUserWithEmailAndPassword(user.email, user.password)
+      .then(this.storeAuthData);
+  }
+  logout() {
+    return this.auth
+      .$signOut()
+      .then(this.clearAuthData);
+  }
+  requireAuthentication() {
+    return this.auth
+      .$waitForSignIn()
+      .then(this.onSignIn);
+  }
+  isAuthenticated() {
+    return !!this.authData;
+  }
+  getUser() {
+    if (this.authData) return this.authData;
+  }
+}
