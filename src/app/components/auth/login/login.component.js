@@ -1,21 +1,29 @@
-var login = {
-  templateUrl: './login.html',
-  controller: 'LoginController'
-};
+import templateUrl from './login.html';
 
-angular
-  .module('components.auth')
-  .component('login', login)
-  .config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('auth', {
-        redirectTo: 'auth.login',
-        url: '/auth',
-        template: '<div ui-view></div>'
-      })
-      .state('auth.login', {
-        url: '/login',
-        component: 'login'
-      });
-    $urlRouterProvider.otherwise('/auth/login');
-  });
+export const loginComponent = {
+  templateUrl,
+  controller: class LoginComponent {
+    constructor(AuthService, $state) {
+      'ngInject';
+
+      this.authService = AuthService;
+      this.$state = $state;
+    }
+    $onInit() {
+      this.error = null;
+      this.user = {
+        email: '',
+        password: '',
+      };
+    }
+    loginUser(event) {
+      return this.authService
+        .login(event.user)
+        .then(() => {
+          this.$state.go('app');
+        }, reason => {
+          this.error = reason.message;
+        });
+    }
+  },
+};

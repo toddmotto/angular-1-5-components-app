@@ -1,12 +1,29 @@
-var contactTag = {
+import templateUrl from './contact-tag.html';
+
+export const contactTagComponent = {
   bindings: {
     tag: '<',
-    onChange: '&'
+    onChange: '&',
   },
-  templateUrl: './contact-tag.html',
-  controller: 'ContactTagController'
+  templateUrl,
+  controller: class ContactTagComponent {
+    constructor() {
+      'ngInject';
+    }
+    $onInit() {
+      this.tags = ['friends', 'family', 'acquaintances', 'following'];
+    }
+    $onChanges(changes) {
+      if (changes.tag) {
+        this.tag = angular.copy(this.tag);
+      }
+    }
+    updateTag(tag) {
+      this.onChange({
+        $event: {
+          tag,
+        },
+      });
+    }
+  },
 };
-
-angular
-  .module('components.contact')
-  .component('contactTag', contactTag);

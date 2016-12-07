@@ -1,35 +1,37 @@
-describe('App', function () {
-  beforeEach(module('ui.router'));
-
-  beforeEach(module('common', function ($provide) {
-    $provide.value('AuthService', {
-      getUser: angular.noop,
-      logout: angular.noop
+describe('App', () => {
+  beforeEach(() => {
+    angular.mock.module('ui.router');
+    angular.mock.module('common.app', ($provide) => {
+      $provide.value('AuthService', {
+        getUser: angular.noop,
+        logout: angular.noop,
+      });
     });
-  }));
+    angular.mock.module('components.auth');
+    angular.mock.module(($stateProvider) => {
+      $stateProvider.state('contacts', { url: 'app/contacts' });
+    });
+  });
 
-  beforeEach(module('components.auth'));
-
-  beforeEach(module(function ($stateProvider) {
-    $stateProvider.state('contacts', { url: 'app/contacts' });
-  }));
-
-  describe('Routes', function () {
-    var $state, $location, $rootScope, AuthService;
+  describe('Routes', () => {
+    let $state;
+    let $location;
+    let $rootScope;
+    let AuthService;
 
     function goTo(url) {
       $location.url(url);
       $rootScope.$digest();
     }
 
-    beforeEach(inject(function ($injector) {
+    beforeEach(inject(($injector) => {
       $state = $injector.get('$state');
       $location = $injector.get('$location');
       $rootScope = $injector.get('$rootScope');
       AuthService = $injector.get('AuthService');
     }));
 
-    it('should redirect to contacts state', function () {
+    it('should redirect to contacts state', () => {
       spyOn(AuthService, 'isAuthenticated').and.returnValue(true);
 
       goTo('/app');
@@ -38,10 +40,15 @@ describe('App', function () {
     });
   });
 
-  describe('AppController', function () {
-    var $rootScope, $q, $componentController, controller, AuthService, $state;
+  describe('AppComponent', () => {
+    let $rootScope;
+    let $q;
+    let $componentController;
+    let controller;
+    let AuthService;
+    let $state;
 
-    beforeEach(inject(function ($injector) {
+    beforeEach(inject(($injector) => {
       $rootScope = $injector.get('$rootScope');
       $q = $injector.get('$q');
       $componentController = $injector.get('$componentController');
@@ -49,30 +56,26 @@ describe('App', function () {
       $state = $injector.get('$state');
     }));
 
-    it('should get user on instantiated', function () {
-      var user = { $id: 1 }
+    it('should get user on instantiated', () => {
+      const user = { $id: 1 };
       spyOn(AuthService, 'getUser').and.returnValue(user);
 
-      controller = $componentController('app',
-        { $scope: {}, AuthService: AuthService, $state: $state }
-      );
+      controller = $componentController('app', { $scope: {}, AuthService, $state });
 
       expect(AuthService.getUser).toHaveBeenCalled();
       expect(controller.user).toEqual(user);
     });
 
-    it('should go to the login state on logout', function () {
+    it('should go to the login state on logout', () => {
       spyOn(AuthService, 'logout')
-        .and.callFake(function () {
-        var deferred = $q.defer();
-        deferred.resolve();
-        return deferred.promise;
-      });
+        .and.callFake(() => {
+          const deferred = $q.defer();
+          deferred.resolve();
+          return deferred.promise;
+        });
       spyOn($state, 'go').and.callThrough();
 
-      controller = $componentController('app',
-        { $scope: {}, AuthService: AuthService, $state: $state }
-      );
+      controller = $componentController('app', { $scope: {}, AuthService, $state });
 
       controller.logout();
       $rootScope.$digest();
@@ -81,5 +84,4 @@ describe('App', function () {
       expect($state.go).toHaveBeenCalledWith('auth.login');
     });
   });
-
 });

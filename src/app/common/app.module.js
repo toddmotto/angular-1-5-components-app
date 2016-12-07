@@ -1,23 +1,27 @@
+import uiRouter from 'angular-ui-router';
+import { appComponent } from './app.component';
+import { appNav } from './app-nav/app-nav.module';
+import { appSidebar } from './app-sidebar/app-sidebar.module';
+import './app.scss';
 
-/**
- *
- * @ngdoc module
- * @name common
- *
- * @requires ui.router
- * @requires angular-loading-bar
- *
- * @description
- *
- * This is the common module. It includes a run method that setups the loading bar.
- *
- **/
-angular
-  .module('common', [
-    'ui.router',
-    'angular-loading-bar'
+export const app = angular
+  .module('common.app', [
+    uiRouter,
+    appNav,
+    appSidebar,
   ])
-  .run(function ($transitions, cfpLoadingBar) {
-    $transitions.onStart({}, cfpLoadingBar.start);
-    $transitions.onSuccess({}, cfpLoadingBar.complete);
-  });
+  .component('app', appComponent)
+  .config(($stateProvider) => {
+    'ngInject';
+
+    $stateProvider
+      .state('app', {
+        redirectTo: 'contacts',
+        url: '/app',
+        data: {
+          requiredAuth: true,
+        },
+        component: 'app',
+      });
+  })
+  .name;

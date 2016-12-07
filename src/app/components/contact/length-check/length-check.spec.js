@@ -1,12 +1,14 @@
-describe('Contact', function () {
-  beforeEach(module('components.contact'));
+describe('Contact', () => {
+  beforeEach(() => {
+    angular.mock.module('components.contact');
+  });
 
-  describe('lengthCheck', function () {
-    var $rootScope,
-      $compile,
-      element;
+  describe('lengthCheck', () => {
+    let $rootScope;
+    let $compile;
+    let element;
 
-    beforeEach(inject(function ($injector) {
+    beforeEach(inject(($injector) => {
       $rootScope = $injector.get('$rootScope');
       $compile = $injector.get('$compile');
 
@@ -16,12 +18,12 @@ describe('Contact', function () {
       $rootScope.$digest();
     }));
 
-    it('should contain dynamic-input class', function() {
+    it('should contain dynamic-input class', () => {
       expect(element.hasClass('dynamic-input')).toEqual(true);
     });
 
-    it('should dynamically add dynamic-input--no-contents class', function() {
-      var scope = element.scope();
+    it('should dynamically add dynamic-input--no-contents class', () => {
+      const scope = element.scope();
 
       element.val('John Doe').triggerHandler('input');
       scope.$apply();

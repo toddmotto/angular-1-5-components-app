@@ -16,11 +16,11 @@
       ng-model="$ctrl.user.password">
   </label>
   <div class="auth-button">
-    <button class="button" type="submit" ng-disabled="authForm.$invalid">
+    <button type="submit" ng-disabled="authForm.$invalid">
       {{ $ctrl.button }}
     </button>
   </div>
-  <div ng-if="$ctrl.message" class="message error">
+  <div ng-if="$ctrl.message">
     {{ $ctrl.message }}
   </div>
 </form>

@@ -1,55 +1,54 @@
-/**
- *
- * @ngdoc module
- * @name components.auth
- *
- * @requires ui.router
- * @requires firebase
- *
- * @description
- *
- * This is the auth module. It includes our auth components
- *
- **/
-angular
-  .module('components.auth', [
-    'ui.router',
-    'firebase'
-  ])
-  .config(function ($firebaseRefProvider) {
+import firebase from 'firebase';
+import angularfire from 'angularfire';
+import uiRouter from 'angular-ui-router';
+import { AuthService } from './auth.service';
+import { login } from './login/login.module';
+import { register } from './register/register.module';
+import { authForm } from './auth-form/auth-form.module';
+import './auth.scss';
 
-    var config = {
-      apiKey: "AIzaSyCsNISt3dFx7dy5AImIIk62jDDd0OLvZK0",
-      authDomain: "contacts-manager-e486f.firebaseapp.com",
-      databaseURL: "https://contacts-manager-e486f.firebaseio.com",
-      storageBucket: "contacts-manager-e486f.appspot.com",
-    };
+const firebaseConfig = {
+	apiKey: 'AIzaSyBSf5XnsvoPRewbCVQ1MXPD62KKlA7N6-o',
+	authDomain: 'project-belantis.firebaseapp.com',
+	databaseURL: 'https://project-belantis.firebaseio.com',
+	storageBucket: 'project-belantis.appspot.com',
+	messagingSenderId: '615638830609',
+};
+
+export const app = firebase.initializeApp(firebaseConfig);
+
+export const auth = angular
+  .module('components.auth', [
+    angularfire,
+		uiRouter,
+    login,
+    register,
+    authForm,
+  ])
+  .config(($firebaseRefProvider) => {
+    'ngInject';
 
     $firebaseRefProvider
       .registerUrl({
-        default: config.databaseURL,
-        contacts: config.databaseURL + '/contacts'
+        default: firebaseConfig.databaseURL,
+        contacts: `${firebaseConfig.databaseURL}/contacts`,
       });
-
-    firebase.initializeApp(config);
   })
-  .run(function ($transitions, $state, AuthService) {
+  .run(($transitions, $state, AuthService) => {
+    'ngInject';
+
     $transitions.onStart({
-      to: function (state) {
-        return !!(state.data && state.data.requiredAuth);
-      }
-    }, function() {
+      to: (state) => !!(state.data && state.data.requiredAuth),
+    }, () => {
       return AuthService
         .requireAuthentication()
-        .catch(function () {
-          return $state.target('auth.login');
-        });
+        .catch(() => $state.target('auth.login'));
     });
     $transitions.onStart({
-      to: 'auth.*'
-    }, function () {
-      if (AuthService.isAuthenticated()) {
-        return $state.target('app');
-      }
+      to: 'auth.*',
+    }, () => {
+      if (AuthService.isAuthenticated()) return $state.target('app');
     });
-  });
+  })
+  .service('AuthService', AuthService)
+  .name;

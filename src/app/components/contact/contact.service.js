@@ -1,41 +1,27 @@
-function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObject) {
-  var ref = $firebaseRef.contacts;
-  var uid = AuthService.getUser().uid;
-  return {
-    createNewContact: function (contact) {
-      return $firebaseArray(ref.child(uid)).$add(contact);
-    },
-    getContactById: function (id) {
-      return $firebaseObject(ref.child(uid).child(id));
-    },
-    getContactList: function () {
-      return $firebaseArray(ref.child(uid));
-    },
-    updateContact: function (contact) {
-      return contact.$save();
-    },
-    deleteContact: function (contact) {
-      return contact.$remove();
-    }
-  };
+import firebase from 'firebase';
+
+export class ContactService {
+  constructor(AuthService, $firebaseArray, $firebaseObject) {
+    'ngInject';
+
+    this.$firebaseArray = $firebaseArray;
+    this.$firebaseObject = $firebaseObject;
+    this.ref = firebase.database().ref('contacts');
+    this.uid = AuthService.getUser().uid;
+  }
+  createNewContact(contact) {
+    return this.$firebaseArray(this.ref.child(this.uid)).$add(contact);
+  }
+  getContactById(id) {
+    return this.$firebaseObject(this.ref.child(this.uid).child(id));
+  }
+  getContactsList() {
+    return this.$firebaseArray(this.ref.child(this.uid));
+  }
+  updateContact(contact) {
+    return contact.$save();
+  }
+  deleteContact(contact) {
+    return contact.$remove();
+  }
 }
-
-/**
- * @ngdoc service
- * @name ContactService
- * @module components.contact
- *
- * @description Provides HTTP methods for our firebase connection.
- *
- * ## Lorem Ipsum 1
- * Aenean ornare odio elit, eget facilisis ipsum molestie ac. Nam bibendum a nibh ut ullamcorper.
- * Donec non felis gravida, rutrum ante mattis, sagittis urna. Sed quam quam, facilisis vel cursus at.
- *
- * ## Lorem Ipsum 2
- * Aenean ornare odio elit, eget facilisis ipsum molestie ac. Nam bibendum a nibh ut ullamcorper.
- * Donec non felis gravida, rutrum ante mattis, sagittis urna. Sed quam quam, facilisis vel cursus at.
- */
-
-angular
-  .module('components.contact')
-  .factory('ContactService', ContactService);

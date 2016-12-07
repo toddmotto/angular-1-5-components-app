@@ -4,9 +4,7 @@
       <span class="contact__required">*</span> field is required
     </div>
     <div class="contact__box">
-      <h3 class="contact__sub-title">
-        Personal
-      </h3>
+      <h3 class="contact__sub-title">Personal</h3>
       <div class="contact__field">
         <label>
           Name <span class="contact__required">*</span>
@@ -14,17 +12,17 @@
         <input
           type="text"
           name="name"
-          length-check
           required="required"
+          length-check
           ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.name"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
               'default': 250,
               'blur': 0
             }
-          }"
-          ng-model="$ctrl.contact.name">
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -38,14 +36,14 @@
           name="email"
           length-check
           ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.email"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
               'default': 250,
               'blur': 0
             }
-          }"
-          ng-model="$ctrl.contact.email">
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -56,14 +54,14 @@
           name="jobTitle"
           length-check
           ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.job"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
               'default': 250,
               'blur': 0
             }
-          }"
-          ng-model="$ctrl.contact.job">
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -74,20 +72,18 @@
           name="location"
           length-check
           ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.location"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
               'default': 250,
               'blur': 0
             }
-          }"
-          ng-model="$ctrl.contact.location">
+          }">
       </div>
     </div>
     <div class="contact__box contact__box--no-margin">
-      <h3 class="contact__sub-title">
-        Social
-      </h3>
+      <h3 class="contact__sub-title">Social</h3>
       <div class="contact__field">
         <label>
           Facebook
@@ -97,14 +93,14 @@
           name="facebook"
           length-check
           ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.social.facebook"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
               'default': 250,
               'blur': 0
             }
-          }"
-          ng-model="$ctrl.contact.social.facebook">
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -115,14 +111,14 @@
           name="github"
           length-check
           ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.social.github"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
               'default': 250,
               'blur': 0
             }
-          }"
-          ng-model="$ctrl.contact.social.github">
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -133,14 +129,14 @@
           name="twitter"
           length-check
           ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.social.twitter"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
               'default': 250,
               'blur': 0
             }
-          }"
-          ng-model="$ctrl.contact.social.twitter">
+          }">
       </div>
       <div class="contact__field">
         <label>
@@ -151,14 +147,14 @@
           name="linkedin"
           length-check
           ng-change="$ctrl.updateContact();"
+          ng-model="$ctrl.contact.social.linkedin"
           ng-model-options="{
             'updateOn': 'default blur',
             'debounce': {
               'default': 250,
               'blur': 0
             }
-          }"
-          ng-model="$ctrl.contact.social.linkedin">
+          }">
       </div>
     </div>
 
@@ -169,19 +165,13 @@
 
     <div ng-if="$ctrl.isNewContact">
       <button
-        class="contact__action button"
         ng-disabled="contactDetailForm.$invalid"
-        ng-click="$ctrl.saveContact();">
-        Create contact
-      </button>
+        ng-click="$ctrl.saveContact();">Create contact</button>
     </div>
     <div ng-if="!$ctrl.isNewContact">
       <button
-        class="contact__action button delete"
-        ng-click="$ctrl.deleteContact();">
-        Delete contact
-      </button>
+        class="delete"
+        ng-click="$ctrl.deleteContact();">Delete contact</button>
     </div>
-
   </form>
 </div>

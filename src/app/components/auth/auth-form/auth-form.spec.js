@@ -1,13 +1,15 @@
-describe('Auth', function () {
-  beforeEach(module('components.auth'));
+describe('Auth', () => {
+  beforeEach(() => {
+    angular.mock.module('components.auth');
+  });
 
-  describe('AuthFormController', function () {
-    var $componentController,
-      controller,
-      mockUser = { $id: 1 },
-      mockSubmit = angular.noop;
+  describe('AuthFormController', () => {
+    let $componentController;
+    let controller;
+    const mockUser = { $id: 1 };
+    const mockSubmit = angular.noop;
 
-    beforeEach(inject(function ($injector) {
+    beforeEach(inject(($injector) => {
       $componentController = $injector.get('$componentController');
 
       controller = $componentController('authForm',
@@ -16,8 +18,8 @@ describe('Auth', function () {
       );
     }));
 
-    it('should call onSelect with the correct payload', function () {
-      var payload = { $event: { user: mockUser } };
+    it('should call onSelect with the correct payload', () => {
+      const payload = { $event: { user: mockUser } };
 
       spyOn(controller, 'onSubmit');
       controller.submitForm();

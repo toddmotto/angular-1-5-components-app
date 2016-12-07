@@ -1,0 +1,38 @@
+.auth {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .1);
+  padding: 20px 30px;
+  width: 600px;
+  margin: 50px auto 0;
+
+  h1 {
+    margin: 0 0 10px;
+  }
+
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  &__info {
+    text-align: center;
+    margin-top: 20px;
+
+    a {
+      font-size: 12px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .auth-button {
+    text-align: center;
+  }
+}

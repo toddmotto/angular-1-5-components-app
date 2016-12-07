@@ -1,17 +1,10 @@
 <div class="contact__field contact__field--long">
-  <label>
-    Tag
-  </label>
+  <label>Tag</label>
   <ul>
-    <li
-      class="contact-card__pill contact-card__pill--{{ tag }}"
+    <li class="contact-card__pill contact-card__pill--{{ tag }}"
       ng-repeat="tag in ::$ctrl.tags"
-      ng-class="{
-        'contact__pill--active': $ctrl.tag == tag
-      }">
-      <button class="button--clean" ng-click="$ctrl.updateTag(tag);">
-        {{ ::tag }}
-      </button>
+      ng-class="{ 'contact__pill--active': $ctrl.tag == tag }">
+      <a href="" ng-click="$ctrl.updateTag(tag);">{{ ::tag }}</a>
     </li>
   </ul>
 </div>

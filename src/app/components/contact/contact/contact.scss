@@ -1,0 +1,55 @@
+.contact-card {
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+
+  &__link {
+    display: block;
+    padding: 15px 20px;
+    font-size: 16px;
+    overflow: hidden;
+  }
+
+  &__column {
+    float: left;
+
+    &--name {
+      width: 30%;
+    }
+  }
+
+  &__pill {
+    opacity: 0.4;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    padding: 2px 5px 1px;
+    font-weight: 500;
+    margin-left: 10px;
+    color: #fff;
+
+    &--friends {
+      background: #008FED;
+    }
+
+    &--family {
+      background: #FF387E;
+    }
+
+    &--acquaintances {
+      background: #B5D158;
+    }
+
+    &--following {
+      background: #DB5A3D;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+}
+
+.contact-card__column .contact-card__pill {
+  opacity: 1
+}
