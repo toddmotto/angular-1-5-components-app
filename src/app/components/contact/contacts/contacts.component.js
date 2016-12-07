@@ -1,11 +1,11 @@
-import templateUrl from './contacts.html';
+import template from './contacts.html';
 
 export const contactsComponent = {
   bindings: {
     contacts: '<',
     filter: '<',
   },
-  templateUrl,
+  template,
   controller: class ContactsComponent {
     constructor($state, $filter) {
       'ngInject';
