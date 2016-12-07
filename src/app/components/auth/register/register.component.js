@@ -1,7 +1,7 @@
-import templateUrl from './register.html';
+import template from './register.html';
 
 export const registerComponent = {
-  templateUrl,
+  template,
   controller: class RegisterComponent {
     constructor(AuthService, $state) {
       'ngInject';

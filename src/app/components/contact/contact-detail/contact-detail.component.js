@@ -1,4 +1,4 @@
-import templateUrl from './contact-detail.html';
+import template from './contact-detail.html';
 
 export const contactDetailComponent = {
   bindings: {
@@ -7,7 +7,7 @@ export const contactDetailComponent = {
     onUpdate: '&',
     onDelete: '&',
   },
-  templateUrl,
+  template,
   controller: class ContactDetailComponent {
     constructor() {
       'ngInject';

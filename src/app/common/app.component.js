@@ -1,7 +1,7 @@
-import templateUrl from './app.html';
+import template from './app.html';
 
 export const appComponent = {
-  templateUrl,
+  template,
   controller: class AppComponent {
     constructor(AuthService, $state) {
       'ngInject';
