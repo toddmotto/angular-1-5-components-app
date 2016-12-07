@@ -1,5 +1,5 @@
-import templateUrl from './root.html';
+import template from './root.html';
 
 export const rootComponent = {
-  templateUrl,
+  template,
 };
