@@ -1,11 +1,11 @@
-import template from './contact-tag.html';
+import templateUrl from './contact-tag.html';
 
 export const contactTagComponent = {
   bindings: {
     tag: '<',
     onChange: '&',
   },
-  template,
+  templateUrl,
   controller: class ContactTagComponent {
     constructor() {
       'ngInject';

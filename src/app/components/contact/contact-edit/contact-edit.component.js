@@ -1,10 +1,10 @@
-import template from './contact-edit.html';
+import templateUrl from './contact-edit.html';
 
 export const contactEditComponent = {
   bindings: {
     contact: '<',
   },
-  template,
+  templateUrl,
   controller: class ContactEditComponent {
     constructor(ContactService, cfpLoadingBar, $window, $state) {
       'ngInject';

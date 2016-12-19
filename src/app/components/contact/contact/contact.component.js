@@ -1,11 +1,11 @@
-import template from './contact.html';
+import templateUrl from './contact.html';
 
 export const contactComponent = {
   bindings: {
     contact: '<',
     onSelect: '&',
   },
-  template,
+  templateUrl,
   controller: class ContactComponent {
     constructor() {
       'ngInject';
