@@ -1,4 +1,4 @@
-import template from './auth-form.html';
+import templateUrl from './auth-form.html';
 
 export const formComponent = {
   bindings: {
@@ -7,7 +7,7 @@ export const formComponent = {
     message: '@',
     onSubmit: '&',
   },
-  template,
+  templateUrl,
   controller: class FormComponent {
     constructor() {
       'ngInject';

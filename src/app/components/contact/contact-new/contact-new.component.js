@@ -1,7 +1,7 @@
-import template from './contact-new.html';
+import templateUrl from './contact-new.html';
 
 export const contactNewComponent = {
-  template,
+  templateUrl,
   controller: class ContactNewComponent {
     constructor(ContactService, $state) {
       'ngInject';
