@@ -1,6 +1,6 @@
 <a href="https://ultimateangular.com" target="_blank"><img src="https://toddmotto.com/img/ua.png"></a>
 
-# Angular 1.5 component architecture app
+# AngularJS 1.5 component architecture app
 
 > Try the [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) app! You'll need to register and create an account.
 
@@ -10,11 +10,11 @@
 
 ---
 
-A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application built on Angular 1.5 components, ui-router 1.0.0, Firebase. Want to build it? Jump on my [Angular 1.5 Pro course](https://ultimateangular.com).
+A [Contacts Manager](https://contacts-manager-e486f.firebaseapp.com) application built on AngularJS 1.5 components, ui-router 1.0.0, Firebase. Want to build it? Jump on my [AngularJS 1.5 Pro course](https://ultimateangular.com).
 
 ### List of features:
 
-- Angular 1.5 `.component()` method
+- AngularJS 1.5 `.component()` method
 - Stateful/stateless and routed components
 - One-way dataflow
 - Lifecycle hooks
