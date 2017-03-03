@@ -5,7 +5,7 @@ function buildDocData(doc, extraData) {
 
     // So that we can create states even though our module names contain dots(.)
     // in UI-Router dotted notation means it's a child state, so this is problematic
-    // if we are following Angular styleguides and conventions regarding
+    // if we are following AngularJS styleguides and conventions regarding
     // naming of our Modules
     // #hack #lazy
     var splitName = doc.name.split('.');
