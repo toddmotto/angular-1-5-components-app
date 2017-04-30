@@ -45,7 +45,7 @@ describe('Contact', function () {
     });
   });
 
-  describe('ContactController', function () {
+  describe('ContactsController', function () {
     var $componentController,
       controller,
       $filter,
@@ -70,6 +70,7 @@ describe('Contact', function () {
         { $scope: {}, $filter: $filter, $state: $state },
         { filter: mockFilter, contacts: mockContacts }
       );
+      controller.$onInit();
     }));
 
     it('should filter contacts', function() {

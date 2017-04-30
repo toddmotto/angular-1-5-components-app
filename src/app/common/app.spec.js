@@ -11,7 +11,7 @@ describe('App', function () {
   beforeEach(module('components.auth'));
 
   beforeEach(module(function ($stateProvider) {
-    $stateProvider.state('contacts', { url: 'app/contacts' });
+    $stateProvider.state('contacts', { url: '/app/contacts' });
   }));
 
   describe('Routes', function () {
