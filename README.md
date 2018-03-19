@@ -1,4 +1,8 @@
-<a href="https://ultimateangular.com" target="_blank"><img src="https://toddmotto.com/img/ua.png"></a>
+---
+
+<a href="https://ultimateangular.com" target="_blank"><img src="https://ultimateangular.com/assets/img/banners/ua-github.svg"></a>
+
+---
 
 # AngularJS 1.5 component architecture app
 
