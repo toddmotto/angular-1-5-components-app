@@ -1,7 +1,8 @@
 ---
 
-<a href="https://ultimateangular.com" target="_blank"><img src="https://ultimateangular.com/assets/img/banners/ua-github.svg"></a>
-
+<div align="center">
+<a href="https://ultimatecourses.com/courses/angular" target="_blank"><img width="100%" src="https://ultimatecourses.com/static/banners/ultimate-angular-github.svg"></a>
+</div>
 ---
 
 # AngularJS 1.5 component architecture app
